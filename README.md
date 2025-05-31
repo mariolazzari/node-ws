@@ -73,3 +73,63 @@ createServer((req, res) => {
   console.log("Server is running at http://localhost:3000/");
 });
 ```
+
+### Creating a file server
+
+```js
+const { createServer } = require("http");
+const { createReadStream } = require("fs");
+
+const sendFile = (res, status, type, file) => {
+  res.writeHead(status, { "Content-Type": type });
+  createReadStream(file).pipe(res);
+};
+
+createServer((req, res) => {
+  switch (req.url) {
+    case "/":
+      return sendFile(res, 200, "text/html", "index.html");
+
+    case "/img/image.jpg":
+      return sendFile(res, 200, "image/jpeg", "./image.jpg");
+
+    case "styles.css":
+      return sendFile(res, 200, "text/css", "styles.css");
+
+    default:
+      return sendFile(res, 404, "text/html", "404.html");
+  }
+}).listen(3000, () => {
+  console.log("Server running at http://localhost:3000/");
+});
+```
+
+### Serving JSON data
+
+```js
+const { createServer } = require("http");
+const cats = require("./cats");
+
+const filterByName = name =>
+  cats.filter(cat => cat.name.toLowerCase() === name.toLowerCase());
+
+createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/json" });
+  let data;
+
+  switch (req.url.toLowerCase()) {
+    case "/biscuit":
+      data = filterByName("Biscuit");
+      break;
+
+    case "/jungle":
+      data = filterByName("Jungle");
+      break;
+
+    default:
+      data = cats;
+  }
+
+  res.end(JSON.stringify(data));
+}).listen(3000);
+```

@@ -1,8 +1,6 @@
 const https = require("https");
 const fs = require("fs");
 
-console.time("Request Time");
-
 const options = {
   hostname: "it.wikipedia.org",
   port: 443,
@@ -17,7 +15,6 @@ const request = https.request(options, res => {
 
   res.on("data", chunk => {
     resBody += chunk;
-    // console.log(`${chunk.length} bytes received`);
   });
 
   res.on("end", () => {
@@ -32,4 +29,3 @@ const request = https.request(options, res => {
 });
 
 request.end();
-console.timeEnd("Request Time");

@@ -1,7 +1,6 @@
 const https = require("https");
 const fs = require("fs");
 
-console.time("Request Time");
 const url = "https://it.wikipedia.org/wiki/Immanuel_Kant";
 
 const request = https.get(url, res => {
@@ -15,4 +14,3 @@ const request = https.get(url, res => {
 });
 
 request.end();
-console.timeEnd("Request Time");

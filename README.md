@@ -260,3 +260,9 @@ app.get("/dictionary", (_req, res) => {
 
 app.listen(3000, () => console.log("ski dictionary running at 3000"));
 ```
+
+### Handling POST requests
+
+```js
+
+```

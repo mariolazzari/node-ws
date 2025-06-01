@@ -133,3 +133,29 @@ createServer((req, res) => {
   res.end(JSON.stringify(data));
 }).listen(3000);
 ```
+
+## npm
+
+### The package.json file
+
+```sh
+npm init -y
+```
+
+### Using import statement
+
+```json
+{
+  "name": "2_import",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "Mario Lazzari",
+  "license": "ISC",
+  "description": ""
+}
+```

@@ -191,5 +191,48 @@ npm i tiny-timer
 ```
 
 ```js
+import parseArgs from "argv";
+import Timer from "tiny-timer";
 
+const { time } = parseArgs.option(process.argv);
+
+if (!time) {
+  console.error("Please provide a time argument.");
+  process.exit(1);
+}
+
+if (isNaN(time)) {
+  console.error("The time argument must be a number.");
+  process.exit(1);
+}
+
+const timer = new Timer();
+
+timer.on("tick", ms => {
+  console.log(`Tick: ${ms} ms`);
+});
+
+timer.on("done", () => {
+  console.log("Timer finished!");
+});
+
+timer.start(time * 1000);
+```
+
+### Managing packages
+
+```json
+{
+  "name": "5_manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js --time 5"
+  },
+  "keywords": [],
+  "author": "Mario Lazzari",
+  "license": "ISC",
+  "type": "commonjs"
+}
 ```

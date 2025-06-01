@@ -417,3 +417,31 @@ app.listen(3000, () => console.log("ski dictionary running at 3000"));
 
 MDN [docs](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 
+```sh
+npm i ws
+```
+
+```js
+import { WebSocketServer } from "ws";
+
+const wss = new WebSocketServer({ port: 3000 });
+
+wss.on("connection", ws => {
+  console.log("New client connected");
+
+  ws.on("message", message => {
+    console.log(`Received message: ${message}`);
+    ws.send(`Echo: ${message}`);
+  });
+
+  ws.on("close", () => {
+    console.log("Client disconnected");
+  });
+});
+```
+
+### Broadcasting messages with a WebSocket
+
+```js
+
+```

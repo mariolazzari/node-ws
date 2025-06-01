@@ -159,3 +159,9 @@ npm init -y
   "description": ""
 }
 ```
+
+### Using minimist
+
+```sh
+npm i argv
+```

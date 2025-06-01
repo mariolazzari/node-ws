@@ -414,3 +414,6 @@ app.listen(3000, () => console.log("ski dictionary running at 3000"));
 ## WebSocket
 
 ### Creating a WebSocket
+
+MDN [docs](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
+

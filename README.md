@@ -565,7 +565,8 @@ app.listen(3000, () => console.log("ski dictionary running at 3000"));
 
 ### Configuring Babel with Jest
 
-[Docs](https://babeljs.io/)
+[Babel](https://babeljs.io/)
+[Jest](https://jestjs.io/)
 
 ```json
 {
@@ -574,4 +575,16 @@ app.listen(3000, () => console.log("ski dictionary running at 3000"));
 }
 ```
 
-### 
+### Configuring Babel with Jest
+
+```js
+import request from "supertest";
+import app from "./app";
+
+describe("API Tests", () => {
+  it("GET - /dictionary", async () => {
+    const { body } = await request(app).get("/dictionary");
+    expect(body.length).toEqual(3);
+  });
+});
+```

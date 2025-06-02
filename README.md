@@ -563,5 +563,15 @@ import app from "./app.js";
 app.listen(3000, () => console.log("ski dictionary running at 3000"));
 ```
 
-### 
+### Configuring Babel with Jest
 
+[Docs](https://babeljs.io/)
+
+```json
+{
+    "presets": ["@babel/preset-env"],
+    "plugins": ["@babel/plugin-syntax-import-assertions"]
+}
+```
+
+### 

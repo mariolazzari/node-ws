@@ -14,9 +14,11 @@ wss.on("connection", ws => {
       wss.clients.forEach(client => client.send(message.toString()));
     }
   });
+
   ws.on("close", () => {
     console.log("user disconnected");
   });
+
   console.log("new socket connected");
   ws.send("Welcome to Live Chat!");
   if (messages.length) {
